@@ -1,11 +1,8 @@
 import elements.FeedbackModuleContent;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.concurrent.TimeUnit;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -27,6 +24,8 @@ public class FeedbackModule {
     @Order(1)
     public void openFeedbackModuleTest() {
         feedbackModuleContent.clickOpenBtn();
+        feedbackModuleContent.clickArrowDownBtn();
+        feedbackModuleContent.clickArrowUpBtn();
         assertTrue(feedbackModuleContent.contentFeedbackWindowIsVisiable(), "TC.1 is Passed. Feedback has opened");
 
     }
@@ -54,7 +53,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputName();
@@ -82,7 +81,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputName();
@@ -110,7 +109,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputLastName();
@@ -138,7 +137,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputLastName();
@@ -166,7 +165,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     !feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputPhone();
@@ -194,7 +193,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     !feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputPhone();
@@ -222,7 +221,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     !feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputPhone();
@@ -250,7 +249,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputEmail();
@@ -278,7 +277,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputEmail();
@@ -306,7 +305,7 @@ public class FeedbackModule {
                     !feedbackModuleContent.lastNameWarningIsVisiable() &&
                     feedbackModuleContent.phoneWarningIsVisiable() &&
                     !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
                 feedbackModuleContent.clearInputEmail();
@@ -337,12 +336,143 @@ public class FeedbackModule {
                     !feedbackModuleContent.commentWarningIsVisiable() &&
                     !feedbackModuleContent.fz152WarningIsVisiable()
             ) {
-                feedbackModuleContent.clearInputComments();
+                feedbackModuleContent.clearNotEmtyInputComments();
                 driver.navigate().refresh();
                 assertTrue(true, "TC.20 is Passed. Input comments is corrected");
             } else {
                 assertFalse(true, "TC.20 is Failed. Incorrect behavior");
             }
+        }
+    }
+
+    @Test
+    @Order(14)
+    public void switchCheckBoxFz152WithCloseBtn() {
+        feedbackModuleContent.clickOpenBtn();
+        feedbackModuleContent.clickArrowDownBtn();
+
+        feedbackModuleContent.clearInputName();
+        feedbackModuleContent.changeValueText("inputName","eng", 100, true);
+
+        feedbackModuleContent.clearInputLastName();
+        feedbackModuleContent.changeValueText("inputLastName","eng", 200, true);
+
+        feedbackModuleContent.clearInputPhone();
+        feedbackModuleContent.changeValuePhone("375");
+
+        feedbackModuleContent.clearInputEmail();
+        feedbackModuleContent.changeValueEmail("eng", true, true);
+
+        feedbackModuleContent.clearInputComments();
+        feedbackModuleContent.changeValueComments();
+
+        feedbackModuleContent.clickCheckBoxFz152();
+        if (feedbackModuleContent.moduleWindowFz152IsVisiable()) {
+            feedbackModuleContent.clickModuleWindowFz152CloseBtn();
+            if (!feedbackModuleContent.nameWarningIsVisiable() &&
+                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
+                    !feedbackModuleContent.phoneWarningIsVisiable() &&
+                    !feedbackModuleContent.emailWarningIsVisiable() &&
+                    !feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.fz152WarningIsVisiable()
+            ) {
+                driver.navigate().refresh();
+                assertTrue(true, "TC.21 is Passed. Checkbox FZ152 has diactivated");
+            } else {
+                assertFalse(true, "TC.21 is Failed. Checkbox FZ152 is still activating");
+            }
+        } else {
+            assertFalse(true, "TC.21 is Failed. Modal window hasn't appeared");
+        }
+    }
+
+    @Test
+    @Order(15)
+    public void switchCheckBoxFz152WithCancelBtn() {
+        feedbackModuleContent.clickOpenBtn();
+        feedbackModuleContent.clickArrowDownBtn();
+
+        feedbackModuleContent.clearInputName();
+        feedbackModuleContent.changeValueText("inputName","eng", 100, true);
+
+        feedbackModuleContent.clearInputLastName();
+        feedbackModuleContent.changeValueText("inputLastName","eng", 200, true);
+
+        feedbackModuleContent.clearInputPhone();
+        feedbackModuleContent.changeValuePhone("375");
+
+        feedbackModuleContent.clearInputEmail();
+        feedbackModuleContent.changeValueEmail("eng", true, true);
+
+        feedbackModuleContent.clearInputComments();
+        feedbackModuleContent.changeValueComments();
+
+        feedbackModuleContent.clickCheckBoxFz152();
+        if (feedbackModuleContent.moduleWindowFz152IsVisiable()) {
+            feedbackModuleContent.clickModuleWindowFz152DownScrollBtn();
+            feedbackModuleContent.clickModuleWindowFz152CancelBtn();
+            if (!feedbackModuleContent.nameWarningIsVisiable() &&
+                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
+                    !feedbackModuleContent.phoneWarningIsVisiable() &&
+                    !feedbackModuleContent.emailWarningIsVisiable() &&
+                    !feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.fz152WarningIsVisiable()
+            ) {
+                driver.navigate().refresh();
+                assertTrue(true, "TC.22 is Passed. Checkbox FZ152 has diactivated");
+            } else {
+                assertFalse(true, "TC.22 is Failed. Checkbox FZ152 is still activating");
+            }
+        } else {
+            assertFalse(true, "TC.22 is Failed. Modal window hasn't appeared");
+        }
+    }
+
+    @Test
+    @Order(16)
+    public void switchCheckBoxFz152WithAccessBtn() {
+        feedbackModuleContent.clickOpenBtn();
+        feedbackModuleContent.clickArrowDownBtn();
+
+        feedbackModuleContent.clearInputName();
+        feedbackModuleContent.changeValueText("inputName","eng", 100, true);
+
+        feedbackModuleContent.clearInputLastName();
+        feedbackModuleContent.changeValueText("inputLastName","eng", 200, true);
+
+        feedbackModuleContent.clearInputPhone();
+        feedbackModuleContent.changeValuePhone("375");
+
+        feedbackModuleContent.clearInputEmail();
+        feedbackModuleContent.changeValueEmail("eng", true, true);
+
+        feedbackModuleContent.clearInputComments();
+        feedbackModuleContent.changeValueComments();
+
+        feedbackModuleContent.clickCheckBoxFz152();
+        if (feedbackModuleContent.moduleWindowFz152IsVisiable()) {
+            feedbackModuleContent.clickModuleWindowFz152CloseBtn();
+            if (!feedbackModuleContent.nameWarningIsVisiable() &&
+                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
+                    !feedbackModuleContent.phoneWarningIsVisiable() &&
+                    !feedbackModuleContent.emailWarningIsVisiable() &&
+                    !feedbackModuleContent.commentWarningIsVisiable() &&
+                    feedbackModuleContent.fz152WarningIsVisiable()
+            ) {
+                feedbackModuleContent.clickCheckBoxFz152();
+                if (feedbackModuleContent.moduleWindowFz152IsVisiable()) {
+                    feedbackModuleContent.clickModuleWindowFz152DownScrollBtn();
+                    feedbackModuleContent.clickModuleWindowFz152AccessBtn();
+                    feedbackModuleContent.clickSendBtn();
+                    assertTrue(feedbackModuleContent.successWindowIsVisiable());
+                } else {
+                    assertFalse(true, "TC.23 is Failed. Modal window hasn't appeared");
+                }
+            } else {
+                assertFalse(true, "TC.23 is Failed. Checkbox FZ152 is still activating");
+            }
+        } else {
+            assertFalse(true, "TC.23 is Failed. Modal window hasn't appeared");
         }
     }
 }

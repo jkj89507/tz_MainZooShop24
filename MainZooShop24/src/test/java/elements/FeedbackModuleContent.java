@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class FeedbackModuleContent {
@@ -25,13 +24,21 @@ public class FeedbackModuleContent {
     private final By inputEmail = By.name("email");
     private final By warningMessageInputEmail = By.xpath(".//input[@name='email']/../div[2]");
     private final By inputComments = By.xpath(".//textarea[@class='b24-form-control']");
-    private final By warningMessageInputComments = By.xpath(".//textarea[@class='b24-form-control']/../div[2]");
+
+    private final By inputCommentsNotEmpty = By.xpath(".//textarea[@class='b24-form-control b24-form-control-not-empty']");
+    private final By warningMessageInputComments = By.xpath(".//textarea[@class='b24-form-control b24-form-control-not-empty']/../div[2]");
+    private final By warningMessageInputCommentsIsEmpty = By.xpath(".//textarea[@class='b24-form-control']/../div[2]");
     private final By checkBoxFz152 = By.xpath(".//label[@class='b24-form-control-container']/input");
+    private final By moduleWindowFz152 = By.xpath(".//div[@class='b24-window-popup-wrapper']");
+    private final By moduleWindowFz152CloseBtn = By.xpath(".//div[@class='b24-window-popup-wrapper']/button");
+    private final By moduleWindowFz152DownScrollBtn = By.xpath(".//div[@class='b24-form-scroll-textable-arrow']");
+    private final By moduleWindowFz152AccessBtn = By.xpath(".//div[@class='b24-window-popup-wrapper']/div/div/div[3]/div/div[2]/div[1]/button");
+    private final By moduleWindowFz152CancelBtn = By.xpath(".//div[@class='b24-window-popup-wrapper']/div/div/div[3]/div/div[2]/div[2]/button");
     private final By warningMessageCheckBoxFz152 = By.xpath(".//label[@class='b24-form-control-container']/div");
     private final By arrowUpScrollBtn = By.xpath(".//button[@class='b24-window-scroll-arrow-up']");
     private final By arrowDownScrollBtn = By.xpath(".//button[@class='b24-window-scroll-arrow-down']");
     private final By sendBtn = By.xpath(".//form/div[@class='b24-form-btn-container']/div/button");
-
+    private final By successWindow = By.xpath(".//div[@class='b24-form-state b24-form-success']");
     public FeedbackModuleContent(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
@@ -56,8 +63,19 @@ public class FeedbackModuleContent {
 
     public boolean contentFeedbackWindowIsVisiable() {
         return driver.findElement(contentFeedbackWindow)
+                    .isDisplayed();
+    }
+
+    public boolean moduleWindowFz152IsVisiable() {
+        return driver.findElement(moduleWindowFz152)
+                    .isDisplayed();
+    }
+
+    public boolean successWindowIsVisiable() {
+        return driver.findElement(successWindow)
                 .isDisplayed();
     }
+
     public void clickCloseBtn() {
         driver.findElement(closeFeedbackBtn)
                 .click();
@@ -76,6 +94,45 @@ public class FeedbackModuleContent {
     public void clickArrowDownBtn() {
         if (driver.findElement(arrowDownScrollBtn).isEnabled()) {
             driver.findElement(arrowDownScrollBtn)
+                    .click();
+            Utils.delay(1500);
+        }
+    }
+    public void clickCheckBoxFz152() {
+        if (driver.findElement(checkBoxFz152).isEnabled()) {
+            driver.findElement(checkBoxFz152)
+                    .click();
+            Utils.delay(1500);
+        }
+    }
+
+    public void clickModuleWindowFz152CloseBtn () {
+        if (driver.findElement(moduleWindowFz152CloseBtn).isEnabled()) {
+            driver.findElement(moduleWindowFz152CloseBtn)
+                    .click();
+            Utils.delay(1500);
+        }
+    }
+
+    public void clickModuleWindowFz152DownScrollBtn () {
+        if (driver.findElement(moduleWindowFz152DownScrollBtn).isEnabled()) {
+            driver.findElement(moduleWindowFz152DownScrollBtn)
+                    .click();
+            Utils.delay(1500);
+        }
+    }
+
+    public void clickModuleWindowFz152AccessBtn () {
+        if (driver.findElement(moduleWindowFz152AccessBtn).isEnabled()) {
+            driver.findElement(moduleWindowFz152AccessBtn)
+                    .click();
+            Utils.delay(1500);
+        }
+    }
+
+    public void clickModuleWindowFz152CancelBtn() {
+        if (driver.findElement(moduleWindowFz152CancelBtn).isEnabled()) {
+            driver.findElement(moduleWindowFz152CancelBtn)
                     .click();
             Utils.delay(1500);
         }
@@ -103,6 +160,11 @@ public class FeedbackModuleContent {
 
     public void clearInputComments() {
         driver.findElement(inputComments).clear();
+        Utils.delay(1500);
+    }
+
+    public void clearNotEmtyInputComments() {
+        driver.findElement(inputCommentsNotEmpty).clear();
         Utils.delay(1500);
     }
 
@@ -265,9 +327,9 @@ public class FeedbackModuleContent {
                 break;
             }
             case "inputComments": {
-                if (driver.findElement(inputComments).isEnabled()) {
-                    result =  driver.findElement(inputComments)
-                            .getText();
+                if (driver.findElement(inputCommentsNotEmpty).isEnabled()) {
+                    result =  driver.findElement(inputCommentsNotEmpty)
+                            .getAttribute("value");
                 }
                 break;
             }
@@ -303,6 +365,14 @@ public class FeedbackModuleContent {
 
     public boolean emailWarningIsVisiable() {
         if (driver.findElement(warningMessageInputEmail).isDisplayed()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean commentIsEmptyWarningIsVisiable() {
+        if (driver.findElement(warningMessageInputCommentsIsEmpty).isDisplayed()) {
             return true;
         } else {
             return false;
