@@ -189,7 +189,7 @@ public class FeedbackModule {
         }
     }
 
-    @DisplayName("TC.11")
+    @DisplayName("TC.12")
     @Test
     @Order(8)
     public void changeInputPhoneCodeCountryLength2() {
@@ -197,35 +197,6 @@ public class FeedbackModule {
         feedbackModuleContent.clickArrowDownBtn();
         feedbackModuleContent.clearInputPhone();
         feedbackModuleContent.changeValuePhone("44");
-        feedbackModuleContent.clickSendBtn();
-        if (!feedbackModuleContent.getState().endsWith(feedbackModuleContent.getValue("inputPhone"))) {
-            assertFalse(true, "TC.11 is Failed. Inserted text and received text are different");
-        } else {
-            feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisible() &&
-                    !feedbackModuleContent.lastNameWarningIsVisible() &&
-                    !feedbackModuleContent.phoneWarningIsVisible() &&
-                    !feedbackModuleContent.emailWarningIsVisible() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
-                    !feedbackModuleContent.fz152WarningIsVisible()
-            ) {
-                feedbackModuleContent.clearInputPhone();
-                driver.navigate().refresh();
-                assertTrue(true, "TC.11 is Passed. Input phone is corrected");
-            } else {
-                assertFalse(true, "TC.11 is Failed. Incorrect behavior");
-            }
-        }
-    }
-
-    @DisplayName("TC.12")
-    @Test
-    @Order(9)
-    public void changeInputPhoneCodeCountryLength3() {
-        feedbackModuleContent.clickOpenBtn();
-        feedbackModuleContent.clickArrowDownBtn();
-        feedbackModuleContent.clearInputPhone();
-        feedbackModuleContent.changeValuePhone("375");
         feedbackModuleContent.clickSendBtn();
         if (!feedbackModuleContent.getState().endsWith(feedbackModuleContent.getValue("inputPhone"))) {
             assertFalse(true, "TC.12 is Failed. Inserted text and received text are different");
@@ -243,6 +214,35 @@ public class FeedbackModule {
                 assertTrue(true, "TC.12 is Passed. Input phone is corrected");
             } else {
                 assertFalse(true, "TC.12 is Failed. Incorrect behavior");
+            }
+        }
+    }
+
+    @DisplayName("TC.13")
+    @Test
+    @Order(9)
+    public void changeInputPhoneCodeCountryLength3() {
+        feedbackModuleContent.clickOpenBtn();
+        feedbackModuleContent.clickArrowDownBtn();
+        feedbackModuleContent.clearInputPhone();
+        feedbackModuleContent.changeValuePhone("375");
+        feedbackModuleContent.clickSendBtn();
+        if (!feedbackModuleContent.getState().endsWith(feedbackModuleContent.getValue("inputPhone"))) {
+            assertFalse(true, "TC.13 is Failed. Inserted text and received text are different");
+        } else {
+            feedbackModuleContent.resetState();
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    !feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
+            ) {
+                feedbackModuleContent.clearInputPhone();
+                driver.navigate().refresh();
+                assertTrue(true, "TC.13 is Passed. Input phone is corrected");
+            } else {
+                assertFalse(true, "TC.13 is Failed. Incorrect behavior");
             }
         }
     }
