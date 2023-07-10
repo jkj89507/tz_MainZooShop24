@@ -9,6 +9,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Utils {
+    /**
+     * Генерирует строку на английском языке заданной длины
+     *
+     * @param length длина генерируемой строки
+     * @return сгенерированный англ.текст
+     */
     public static String generateEnglishText(int length) {
         String text = "";
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -18,6 +24,12 @@ public class Utils {
         return text;
     }
 
+    /**
+     * Генерирует строку на русском языке заданной длины
+     *
+     * @param length длина генерируемой строки
+     * @return сгенерированный рус.текст
+     */
     public static String generateRussianText(int length) {
         String text = "";
         String alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
@@ -29,6 +41,12 @@ public class Utils {
         return cp1251String;
     }
 
+    /**
+     * Генерирует строку чисел заданной длины
+     *
+     * @param length длина генерируемой строки
+     * @return сгенерировання строка чисел
+     */
     public static String generateNumberText(int length) {
         String text = "";
         String alphabet = "0123456789";
@@ -38,6 +56,12 @@ public class Utils {
         return text;
     }
 
+    /**
+     * Генерирует строку спец.символов заданной длины
+     *
+     * @param length длина генерируемой строки
+     * @return сгенерировання строка спец.символов
+     */
     public static String generateSymbolText(int length) {
         String text = "";
         String alphabet = ".,;-_@'+*\\/[]{}()";
@@ -47,6 +71,12 @@ public class Utils {
         return text;
     }
 
+    /**
+     * Симулирует ручной ввод с клавиатуры
+     *
+     * @param element Web-элемент для ввода значения
+     * @param text вводимое значение
+     */
     public static void sendKeysWithDelay(WebElement element, String text) {
         Random rand = new Random();
         for (char c : text.toCharArray()) {
@@ -56,6 +86,11 @@ public class Utils {
         }
     }
 
+    /**
+     * Временная задержка исполнения тестов
+     *
+     * @param ms время задержки в мс.
+     */
     public static void delay(int ms) {
         try {
             Thread.sleep(ms);
@@ -64,6 +99,13 @@ public class Utils {
         }
     }
 
+
+    /**
+     *  Перемешивание позиций символов в строке
+     *
+     * @param value входное значеним
+     * @return перемешенная строрка
+     */
     public static String shuffleString(String value) {
         List<Character> characters = new ArrayList<>();
         for (char c : value.toCharArray()) {

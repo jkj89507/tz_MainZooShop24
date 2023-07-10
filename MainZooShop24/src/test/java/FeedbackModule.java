@@ -11,7 +11,7 @@ public class FeedbackModule {
     static FeedbackModuleContent feedbackModuleContent;
 
     @BeforeAll
-    public static void setup() {
+    public static void setUpBeforeAll() {
         System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -20,6 +20,12 @@ public class FeedbackModule {
         feedbackModuleContent = new FeedbackModuleContent(driver);
     }
 
+    @AfterAll
+    public static void setUpAfterAll() {
+        driver.quit();
+    }
+
+    @DisplayName("TC.1")
     @Test
     @Order(1)
     public void openFeedbackModuleTest() {
@@ -30,6 +36,7 @@ public class FeedbackModule {
 
     }
 
+    @DisplayName("TC.2")
     @Test
     @Order(2)
     public void closeFeedbackModuleTest() {
@@ -37,6 +44,7 @@ public class FeedbackModule {
         assertFalse(feedbackModuleContent.contentFeedbackWindowIsVisiable(), "TC.2 is Passed. Feedback has closed");
     }
 
+    @DisplayName("TC.5")
     @Test
     @Order(3)
     public void changeInputNameEng() {
@@ -49,12 +57,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.5 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputName();
                 driver.navigate().refresh();
@@ -65,6 +73,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.6")
     @Test
     @Order(4)
     public void changeInputNameEngWithDash() {
@@ -77,12 +86,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.6 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputName();
                 driver.navigate().refresh();
@@ -93,6 +102,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.9")
     @Test
     @Order(5)
     public void changeInputLastNameEng() {
@@ -105,12 +115,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.9 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputLastName();
                 driver.navigate().refresh();
@@ -121,6 +131,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.10")
     @Test
     @Order(6)
     public void changeInputLastNameEngWithDash() {
@@ -133,12 +144,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.10 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputLastName();
                 driver.navigate().refresh();
@@ -149,6 +160,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.11")
     @Test
     @Order(7)
     public void changeInputPhoneCodeCountryLength1() {
@@ -161,12 +173,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.11 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    !feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    !feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputPhone();
                 driver.navigate().refresh();
@@ -177,6 +189,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.11")
     @Test
     @Order(8)
     public void changeInputPhoneCodeCountryLength2() {
@@ -189,12 +202,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.11 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    !feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    !feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputPhone();
                 driver.navigate().refresh();
@@ -205,6 +218,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.12")
     @Test
     @Order(9)
     public void changeInputPhoneCodeCountryLength3() {
@@ -217,12 +231,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.12 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    !feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    !feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputPhone();
                 driver.navigate().refresh();
@@ -233,6 +247,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.17")
     @Test
     @Order(10)
     public void changeInputEmailOnlyText() {
@@ -245,12 +260,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.17 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputEmail();
                 driver.navigate().refresh();
@@ -261,6 +276,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.18")
     @Test
     @Order(11)
     public void changeInputEmailTextNumbers() {
@@ -273,12 +289,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.18 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputEmail();
                 driver.navigate().refresh();
@@ -288,7 +304,7 @@ public class FeedbackModule {
             }
         }
     }
-
+    @DisplayName("TC.19")
     @Test
     @Order(12)
     public void changeInputEmailTextNumbersSymbols() {
@@ -301,12 +317,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.19 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    feedbackModuleContent.commentIsEmptyWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    feedbackModuleContent.commentIsEmptyWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearInputEmail();
                 driver.navigate().refresh();
@@ -317,6 +333,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.20")
     @Test
     @Order(13)
     public void changeInputComments() {
@@ -329,12 +346,12 @@ public class FeedbackModule {
             assertFalse(true, "TC.20 is Failed. Inserted text and received text are different");
         } else {
             feedbackModuleContent.resetState();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    !feedbackModuleContent.commentWarningIsVisiable() &&
-                    !feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    !feedbackModuleContent.commentWarningIsVisible() &&
+                    !feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clearNotEmtyInputComments();
                 driver.navigate().refresh();
@@ -345,6 +362,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.21")
     @Test
     @Order(14)
     public void switchCheckBoxFz152WithCloseBtn() {
@@ -369,12 +387,12 @@ public class FeedbackModule {
         feedbackModuleContent.clickCheckBoxFz152();
         if (feedbackModuleContent.moduleWindowFz152IsVisiable()) {
             feedbackModuleContent.clickModuleWindowFz152CloseBtn();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    !feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    !feedbackModuleContent.commentWarningIsVisiable() &&
-                    feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    !feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    !feedbackModuleContent.commentWarningIsVisible() &&
+                    feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 driver.navigate().refresh();
                 assertTrue(true, "TC.21 is Passed. Checkbox FZ152 has diactivated");
@@ -386,6 +404,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.22")
     @Test
     @Order(15)
     public void switchCheckBoxFz152WithCancelBtn() {
@@ -411,12 +430,12 @@ public class FeedbackModule {
         if (feedbackModuleContent.moduleWindowFz152IsVisiable()) {
             feedbackModuleContent.clickModuleWindowFz152DownScrollBtn();
             feedbackModuleContent.clickModuleWindowFz152CancelBtn();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    !feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    !feedbackModuleContent.commentWarningIsVisiable() &&
-                    feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    !feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    !feedbackModuleContent.commentWarningIsVisible() &&
+                    feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 driver.navigate().refresh();
                 assertTrue(true, "TC.22 is Passed. Checkbox FZ152 has diactivated");
@@ -428,6 +447,7 @@ public class FeedbackModule {
         }
     }
 
+    @DisplayName("TC.23")
     @Test
     @Order(16)
     public void switchCheckBoxFz152WithAccessBtn() {
@@ -452,12 +472,12 @@ public class FeedbackModule {
         feedbackModuleContent.clickCheckBoxFz152();
         if (feedbackModuleContent.moduleWindowFz152IsVisiable()) {
             feedbackModuleContent.clickModuleWindowFz152CloseBtn();
-            if (!feedbackModuleContent.nameWarningIsVisiable() &&
-                    !feedbackModuleContent.lastNameWarningIsVisiable() &&
-                    !feedbackModuleContent.phoneWarningIsVisiable() &&
-                    !feedbackModuleContent.emailWarningIsVisiable() &&
-                    !feedbackModuleContent.commentWarningIsVisiable() &&
-                    feedbackModuleContent.fz152WarningIsVisiable()
+            if (!feedbackModuleContent.nameWarningIsVisible() &&
+                    !feedbackModuleContent.lastNameWarningIsVisible() &&
+                    !feedbackModuleContent.phoneWarningIsVisible() &&
+                    !feedbackModuleContent.emailWarningIsVisible() &&
+                    !feedbackModuleContent.commentWarningIsVisible() &&
+                    feedbackModuleContent.fz152WarningIsVisible()
             ) {
                 feedbackModuleContent.clickCheckBoxFz152();
                 if (feedbackModuleContent.moduleWindowFz152IsVisiable()) {
